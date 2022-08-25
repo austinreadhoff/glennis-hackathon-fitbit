@@ -1,0 +1,181 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{3A670134-1D82-4F88-A22B-EE2877F99B17}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>Fitbit.Portable._48</RootNamespace>
+    <AssemblyName>Fitbit.Portable.48</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.13.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Constants.cs" />
+    <Compile Include="EmptyDateToMinDateConverter.cs" />
+    <Compile Include="FitbitAppCredentials.cs" />
+    <Compile Include="FitbitClient.cs" />
+    <Compile Include="FitbitClientHelper.cs" />
+    <Compile Include="FitbitClientHelperExtensions.cs" />
+    <Compile Include="FitbitException.cs" />
+    <Compile Include="FitbitHttpMessageHandler.cs" />
+    <Compile Include="FitbitParseException.cs" />
+    <Compile Include="FitbitRateLimitException.cs" />
+    <Compile Include="FitbitRequestException.cs" />
+    <Compile Include="FitbitTokenException.cs" />
+    <Compile Include="HttpRequestMessageExtensionMethods.cs" />
+    <Compile Include="IFitbitClient.cs" />
+    <Compile Include="IFitbitInterceptor.cs" />
+    <Compile Include="ITokenStore.cs" />
+    <Compile Include="JsonDotNetSerializer.cs" />
+    <Compile Include="JsonDotNetSerializerExtensions.cs" />
+    <Compile Include="Models\Activities.cs" />
+    <Compile Include="Models\ActivitiesStats.cs" />
+    <Compile Include="Models\Activity.cs" />
+    <Compile Include="Models\ActivityDistance.cs" />
+    <Compile Include="Models\ActivityGoals.cs" />
+    <Compile Include="Models\ActivityLevel.cs" />
+    <Compile Include="Models\ActivityLog.cs" />
+    <Compile Include="Models\ActivityLogsList.cs" />
+    <Compile Include="Models\ActivityLogSource.cs" />
+    <Compile Include="Models\ActivitySummary.cs" />
+    <Compile Include="Models\APICollectionType.cs" />
+    <Compile Include="Models\ApiError.cs" />
+    <Compile Include="Models\ApiSubscription.cs" />
+    <Compile Include="Models\Asleep.cs" />
+    <Compile Include="Models\AuthCredential.cs" />
+    <Compile Include="Models\Awake.cs" />
+    <Compile Include="Models\BestStats.cs" />
+    <Compile Include="Models\BestTotals.cs" />
+    <Compile Include="Models\BloodPressure.cs" />
+    <Compile Include="Models\BloodPressureAverage.cs" />
+    <Compile Include="Models\BloodPressureData.cs" />
+    <Compile Include="Models\Body.cs" />
+    <Compile Include="Models\BodyGoals.cs" />
+    <Compile Include="Models\BodyMeasurements.cs" />
+    <Compile Include="Models\CaloriesOutStats.cs" />
+    <Compile Include="Models\DatasetInterval.cs" />
+    <Compile Include="Models\DateRangePeriod.cs" />
+    <Compile Include="Models\Deep.cs" />
+    <Compile Include="Models\Device.cs" />
+    <Compile Include="Models\DeviceType.cs" />
+    <Compile Include="Models\DistanceStats.cs" />
+    <Compile Include="Models\Fat.cs" />
+    <Compile Include="Models\FatLog.cs" />
+    <Compile Include="Models\FloorStats.cs" />
+    <Compile Include="Models\Food.cs" />
+    <Compile Include="Models\FoodGoals.cs" />
+    <Compile Include="Models\FoodLog.cs" />
+    <Compile Include="Models\FoodLogUnit.cs" />
+    <Compile Include="Models\FoodSummary.cs" />
+    <Compile Include="Models\Gender.cs" />
+    <Compile Include="Models\GoalPeriod.cs" />
+    <Compile Include="Models\HeartActivities.cs" />
+    <Compile Include="Models\HeartActivitiesIntraday.cs" />
+    <Compile Include="Models\HeartActivitiesIntradayConverter.cs" />
+    <Compile Include="Models\HeartActivitiesTimeSeries.cs" />
+    <Compile Include="Models\HeartRateResolution.cs" />
+    <Compile Include="Models\HeartRateZone.cs" />
+    <Compile Include="Models\IntradayActivitiesHeart.cs" />
+    <Compile Include="Models\IntradayData.cs" />
+    <Compile Include="Models\IntradayResourceType.cs" />
+    <Compile Include="Models\Levels.cs" />
+    <Compile Include="Models\LevelsData.cs" />
+    <Compile Include="Models\LevelsShortdata.cs" />
+    <Compile Include="Models\LifetimeStats.cs" />
+    <Compile Include="Models\LifetimeTotals.cs" />
+    <Compile Include="Models\Light.cs" />
+    <Compile Include="Models\LoggedFood.cs" />
+    <Compile Include="Models\ManualValuesSpecified.cs" />
+    <Compile Include="Models\MinuteData.cs" />
+    <Compile Include="Models\NutritionalValues.cs" />
+    <Compile Include="Models\Pagination.cs" />
+    <Compile Include="Models\Rem.cs" />
+    <Compile Include="Models\RequestToken.cs" />
+    <Compile Include="Models\ResourceOwnerType.cs" />
+    <Compile Include="Models\Restless.cs" />
+    <Compile Include="Models\Sleep.cs" />
+    <Compile Include="Models\SleepData.cs" />
+    <Compile Include="Models\SleepDateRange.cs" />
+    <Compile Include="Models\SleepDateRangeBase.cs" />
+    <Compile Include="Models\SleepDateRangeLevels.cs" />
+    <Compile Include="Models\SleepDateRangeSummary.cs" />
+    <Compile Include="Models\SleepEnum.cs" />
+    <Compile Include="Models\SleepGoal.cs" />
+    <Compile Include="Models\SleepLog.cs" />
+    <Compile Include="Models\SleepLogDateBase.cs" />
+    <Compile Include="Models\SleepLogDateRange.cs" />
+    <Compile Include="Models\SleepLogListBase.cs" />
+    <Compile Include="Models\SleepSummary.cs" />
+    <Compile Include="Models\SortEnum.cs" />
+    <Compile Include="Models\StepStats.cs" />
+    <Compile Include="Models\SubscriptionResponse.cs" />
+    <Compile Include="Models\Summary.cs" />
+    <Compile Include="Models\SummaryOfSleepTypes.cs" />
+    <Compile Include="Models\TimeSeriesDataList.cs" />
+    <Compile Include="Models\TimeSeriesDataListInt.cs" />
+    <Compile Include="Models\TimeSeriesResourceType.cs" />
+    <Compile Include="Models\UpdatedResource.cs" />
+    <Compile Include="Models\UpdatedResourceList.cs" />
+    <Compile Include="Models\UserProfile.cs" />
+    <Compile Include="Models\Wake.cs" />
+    <Compile Include="Models\WaterData.cs" />
+    <Compile Include="Models\WaterLog.cs" />
+    <Compile Include="Models\WaterSummary.cs" />
+    <Compile Include="Models\Weight.cs" />
+    <Compile Include="Models\WeightGoal.cs" />
+    <Compile Include="Models\WeightLog.cs" />
+    <Compile Include="OAuth2\DefaultTokenManager.cs" />
+    <Compile Include="OAuth2\ITokenManager.cs" />
+    <Compile Include="OAuth2\OAuth2AccessToken.cs" />
+    <Compile Include="OAuth2\OAuth2AutoRefreshInterceptor.cs" />
+    <Compile Include="OAuth2\OAuth2Helper.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="StringAttributeExtensions.cs" />
+    <Compile Include="StringValueAttribute.cs" />
+    <Compile Include="SubscriptionManager.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

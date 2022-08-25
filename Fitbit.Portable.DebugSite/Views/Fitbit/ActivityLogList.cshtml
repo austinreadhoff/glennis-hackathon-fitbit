@@ -1,0 +1,28 @@
+﻿@model Fitbit.Api.Portable.Models.ActivityLogsList
+
+@{
+    ViewBag.Title = "Activity";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Activity</h2>
+
+
+<div class="spaced-div">
+    <h3>Activity</h3>
+    @*@Html.DisplayForModel()*@
+
+    @foreach (var log in Model.Activities)
+    {
+        <em>@log.DateOfActivity</em>
+
+        var activityLevelNotZero = log.ActivityLevel.Where(a => a.Minutes > 0).FirstOrDefault();
+        <strong>Activity Type: @activityLevelNotZero.Name - Minutes:   @activityLevelNotZero.Minutes.ToString()</strong>
+        <br/>
+    }
+
+
+
+</div>
+
+

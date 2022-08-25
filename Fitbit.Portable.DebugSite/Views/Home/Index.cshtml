@@ -1,0 +1,22 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="spaced-div">
+    @if (ViewBag.AccessToken != null)
+    {
+        <p>Token -- @ViewBag.Token</p>
+        <p>Token type -- @ViewBag.TokenType</p>
+        <p>Expires In -- @ViewBag.ExpiresIn</p>
+        <p>Refresh token -- @ViewBag.RefreshToken</p>
+
+    }
+    else
+    {
+        <p>The current session has not been authorized with fitbit</p>
+
+        <a class="btn btn-primary" href="@Url.Action("Authorize", "Fitbit")">
+            Authorize
+        </a>
+    }
+</div>
