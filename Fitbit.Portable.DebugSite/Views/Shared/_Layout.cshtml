@@ -30,9 +30,6 @@
     <div class="container body-content">
         @RenderBody()
         <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - Glennis Solutions</p>
-        </footer>
     </div>
 
     @Scripts.Render("~/bundles/jquery")
@@ -40,3 +37,18 @@
     @RenderSection("scripts", required: false)
 </body>
 </html>
+
+<style>
+    @@media screen and (max-width: 400px) {
+    .navbar {
+        display: none;
+    }
+    body{
+        background-image: url("/Content/img/mockupbg.png");
+        background-size: cover;
+    }
+    .body-content{
+        margin-top: 120px;
+    }
+}
+</style>
