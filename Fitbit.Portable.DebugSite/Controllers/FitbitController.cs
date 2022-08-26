@@ -10,6 +10,7 @@ using Fitbit.Api.Portable.OAuth2;
 using SampleWebMVCOAuth2.Models;
 using SampleWebMVCOAuth2.ViewModels;
 using System.Linq;
+using System.Security.Cryptography;
 
 namespace SampleWebMVC.Controllers
 {
@@ -157,6 +158,52 @@ namespace SampleWebMVC.Controllers
                 LogList = response,
                 StepGoal = 3000    //TODO: Get from WebAPI
             };
+            return View(mdl);
+        }
+
+        [HttpGet()]
+        public async Task<ActionResult> ActivityReport()
+        {
+            FitbitClient client = GetFitbitClient();
+            var mdl = new ActivityReportViewModel();
+            List<String> Recipients = new List<string>()
+            {
+                "Brian Gerdon"
+            };
+            foreach (var recipient in Recipients)
+            {
+                var response = await client.GetActivityLogsListAsync(null, DateTime.Now.AddDays(-30), 30);
+                response.Activities = response.Activities
+                    .OrderByDescending(a => a.DateOfActivity)
+                    .ToList();
+            
+                
+                bool alert = false;
+
+                List<Fitbit.Api.Portable.Models.Activities> activities = response.Activities;
+                activities.OrderByDescending(x => x.DateOfActivity);
+                for(int i = 0; i < activities.Count; i++)
+                {
+                    if(i == activities.Count - 1)
+                    {
+                        break;
+                    }
+                    if(activities[i].Steps < (activities[i+1].Steps * .9))
+                    {
+                        alert = true;
+                    }
+                    if(alert)
+                    {
+                        break;
+                    }
+                }
+                
+                if(alert == true)
+                {
+                    mdl.RecipientAlerts.Add(recipient);
+                }
+            }
+
             return View(mdl);
         }
 
