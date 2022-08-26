@@ -4,9 +4,12 @@
     ViewBag.Title = "Activity";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+<div>
+    <canvas id="week-chart" width="300" height="300"></canvas>
+</div>
 <div class="spaced-div">
-    @for (var i = 0; i < Model.LogList.Activities.Count; i++)
+    @*@for (var i = 0; i < Model.LogList.Activities.Count; i++)
     {
         var log = Model.LogList.Activities[i];
         var activityLevelNotZero = log.ActivityLevel.Where(a => a.Minutes > 0).FirstOrDefault();
@@ -23,9 +26,29 @@
         <div>Minutes: @activityLevelNotZero.Minutes.ToString()</div>
         <div>Steps: <span class="@stepClass">@log.Steps</span> @arrow</div>
         <br />
-    }
+    }*@
 </div>
-
+<script>
+    const ctx = document.getElementById('week-chart');
+    const myChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: @Html.Raw("[" + String.Join(",", Model.LogList.Activities.OrderBy(a=>a.DateOfActivity).Select(a => '"'+a.DateOfActivity.ToString()+'"')) + "]"),
+            datasets: [{
+                label: 'Steps',
+                data: @("[" + String.Join(",", Model.LogList.Activities.OrderBy(a=>a.DateOfActivity).Select(a => a.Steps)) + "]"),
+                backgroundColor: @Html.Raw(
+                    "[" + 
+                    String.Join(",", 
+                        Model.LogList.Activities
+                            .OrderBy(a=>a.DateOfActivity)
+                            .Select(a => "'" + ((float)a.Steps/Model.StepGoal > 1 ? "green" : (float)a.Steps/Model.StepGoal > .5 ? "orange" : "red") + "'")) 
+                    + "]"
+                )
+            }]
+        }
+    });
+</script>
 <style>
     .steps-success {
         color: green;
