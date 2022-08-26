@@ -148,9 +148,9 @@ namespace SampleWebMVC.Controllers
         public async Task<ActionResult> ActivityLogList()
         {
             FitbitClient client = GetFitbitClient();
-            var response = await client.GetActivityLogsListAsync(null, DateTime.Now.AddDays(-30),30);
+            var response = await client.GetActivityLogsListAsync(null, DateTime.Now.AddDays(-30),5);
             response.Activities = response.Activities
-                .OrderByDescending(a => a.DateOfActivity)
+                .OrderBy(a => a.DateOfActivity)
                 .ToList();
 
             var mdl = new ActivityLogListViewModel()
