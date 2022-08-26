@@ -10,8 +10,15 @@
     {
         for (var i = 0; i < Model.RecipientAlerts.Count; i++)
         {
-            <div>@Model.RecipientAlerts[i] shows declined activity over the last 3 days</div>
-            @Html.ActionLink("See Details", "ActivityLogList", "FitBit")
+            <div class="row">
+                <div class="col-xs-2">
+                    <img src="~/Content/img/footprints.jpg" />
+                </div>
+                <div class="col-xs-10">
+                    <div>@Model.RecipientAlerts[i] shows declined activity over the last 3 days</div>
+                    @Html.ActionLink("See Details", "ActivityLogList", "FitBit")
+                </div>
+            </div>
         }
     }
 
