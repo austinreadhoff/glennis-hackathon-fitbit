@@ -1,0 +1,18 @@
+﻿@model SampleWebMVCOAuth2.ViewModels.ActivityReportViewModel
+
+@{
+    ViewBag.Title = "Activity";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="spaced-div">
+    @if (Model.RecipientAlerts != null)
+    {
+        for (var i = 0; i < Model.RecipientAlerts.Count; i++)
+        {
+            <div>@Model.RecipientAlerts[i] shows declined activity over the last 3 days</div>
+            @Html.ActionLink("See Details", "ActivityLogList", "FitBit")
+        }
+    }
+
+</div>
