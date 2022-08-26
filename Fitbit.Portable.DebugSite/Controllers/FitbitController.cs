@@ -8,6 +8,8 @@ using Fitbit.Api.Portable;
 using System.Threading.Tasks;
 using Fitbit.Api.Portable.OAuth2;
 using SampleWebMVCOAuth2.Models;
+using SampleWebMVCOAuth2.ViewModels;
+using System.Linq;
 
 namespace SampleWebMVC.Controllers
 {
@@ -146,7 +148,16 @@ namespace SampleWebMVC.Controllers
         {
             FitbitClient client = GetFitbitClient();
             var response = await client.GetActivityLogsListAsync(null, DateTime.Now.AddDays(-30),30);
-            return View(response);
+            response.Activities = response.Activities
+                .OrderByDescending(a => a.DateOfActivity)
+                .ToList();
+
+            var mdl = new ActivityLogListViewModel()
+            {
+                LogList = response,
+                StepGoal = 3000    //TODO: Get from WebAPI
+            };
+            return View(mdl);
         }
 
         //[HttpPost()]
